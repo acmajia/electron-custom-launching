@@ -33,14 +33,14 @@ module.exports = {
 				launchWin = null;
 			});
 			ipcMain.on('launch ready', () => {
-				launchWin.show();
+				launchWin && launchWin.show();
 			});
 			ipcMain.on('main ready', () => {
-				launchWin.webContents && launchWin.webContents.send('do finish');
+				launchWin && launchWin.webContents && launchWin.webContents.send('do finish');
 			});
 			ipcMain.on('do finish', () => {
-				launchWin.close();
-				mainWin.show();
+				launchWin && launchWin.close();
+				mainWin && mainWin.show();
 			});
 		}
 	},
