@@ -8,17 +8,17 @@
 /demo 文件夹下包含一个完整的使用 electron-launch-page 的示例。
 
 launch1.html: 不透明loading
-![avatar](https://github.com/Shaman05/electron-launch-page/blob/master/demo/111111.gif?raw=true)
+![avatar](https://github.com/acmajia/electron-custom-launching/blob/master/demo/111111.gif?raw=true)
 
 launch2.html: 不透明loading，使用进度
-![avatar](https://github.com/Shaman05/electron-launch-page/blob/master/demo/222222.gif?raw=true)
+![avatar](https://github.com/acmajia/electron-custom-launching/blob/master/demo/222222.gif?raw=true)
 
 launch3.html: 透明的loading
-![avatar](https://github.com/Shaman05/electron-launch-page/blob/master/demo/333333.gif?raw=true)
+![avatar](https://github.com/acmajia/electron-custom-launching/blob/master/demo/333333.gif?raw=true)
 
 ## Installation
 
-    npm install electron-launch-page
+    npm install electron-custom-launching
 
 ## Usage
 
@@ -39,7 +39,7 @@ launch3.html: 透明的loading
 
 1. 在自定义的启动页里，如果需要加进度条的交互，参考如下代码：
 
-        const Elp = require('electron-launch-page');
+        const Elp = require('electron-custom-launching');
         Elp.render.launch({
             onProgress(progress) {
                 processBar.style.width = progress + '%';
