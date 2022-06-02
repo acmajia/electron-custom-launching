@@ -1,11 +1,14 @@
 {
-  "name": "electron-launch-page",
-  "version": "1.0.1",
+  "name": "electron-custom-launching",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "license": "MIT",
-  "author": "shaman",
-  "homepage": "https://github.com/Shaman05/electron-launch-page",
-  "repository": "https://github.com/Shaman05/electron-launch-page",
+  "author": "acmajia",
+  "homepage": "https://github.com/acmajia/electron-launch-page",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmajia/electron-launch-page.git"
+  },
   "scripts": {
     "watch": "webpack --watch --config=./webpack.config.js",
     "build": "webpack --progress --config=./webpack.config.js",
@@ -13,7 +16,18 @@
   },
   "files": [
     "dist",
-    "demo",
     "readme.md"
-  ]
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "description": "让你可以自定义启动页，用来优雅的加载展示你的 electron 应用。\r *由于原作者处于不更新状态，修复了一些新版electron.js使用过程中遇到的bug。",
+  "bugs": {
+    "url": "https://github.com/acmajia/electron-launch-page/issues"
+  },
+  "directories": {
+    "test": "test"
+  }
 }

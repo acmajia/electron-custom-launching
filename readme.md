@@ -1,6 +1,7 @@
 # electron-launch-page
 
 让你可以自定义启动页，用来优雅的加载展示你的 electron 应用。
+*由于原作者处于不更新状态，修复了一些新版electron.js使用过程中遇到的bug。
 
 ## Demo
 

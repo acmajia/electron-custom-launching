@@ -13,7 +13,7 @@ module.exports = {
 	version,
 	//主进程访问
 	main: {
-		start(options) {
+		start (options) {
 			let { mainWin, launchUrl, width, height, transparent } = options;
 			let launchOptions = {
 				width,
@@ -32,13 +32,13 @@ module.exports = {
 			launchWin.on('close', () => {
 				launchWin = null;
 			});
-			ipcMain.on('launch ready', ()=> {
+			ipcMain.on('launch ready', () => {
 				launchWin.show();
 			});
-			ipcMain.on('main ready', ()=> {
-				launchWin.webContents.send('do finish');
+			ipcMain.on('main ready', () => {
+				launchWin.webContents && launchWin.webContents.send('do finish');
 			});
-			ipcMain.on('do finish', ()=> {
+			ipcMain.on('do finish', () => {
 				launchWin.close();
 				mainWin.show();
 			});
@@ -46,15 +46,15 @@ module.exports = {
 	},
 	//渲染进程访问
 	render: {
-		launch(options) {
+		launch (options) {
 			let { onProgress, speed } = options || {};
-			let _onProgress = onProgress || function() {};
+			let _onProgress = onProgress || function () { };
 			let _speed = speed;
-			if(['slow', 'normal', 'fast'].indexOf(speed) > -1){
-				_speed = { 'slow': 1, 'normal': 2.5, 'fast': 5}[_speed];
+			if (['slow', 'normal', 'fast'].indexOf(speed) > -1) {
+				_speed = { 'slow': 1, 'normal': 2.5, 'fast': 5 }[_speed];
 			}
 			let progress = 0;
-			let animate = requestAnimationFrame(function go() {
+			let animate = requestAnimationFrame(function go () {
 				progress += Math.random() * _speed;
 				if (progress >= 80) {
 					cancelAnimationFrame(animate);
@@ -64,15 +64,15 @@ module.exports = {
 				}
 			});
 			ipcRenderer.send('launch ready');
-			ipcRenderer.on('do finish', ()=> {
+			ipcRenderer.on('do finish', () => {
 				cancelAnimationFrame(animate);
 				_onProgress(100);
-				setTimeout(()=> {
+				setTimeout(() => {
 					ipcRenderer.send('do finish');
 				}, 100);
 			});
 		},
-		ready() {
+		ready () {
 			ipcRenderer.send('main ready');
 		}
 	}
