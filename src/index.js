@@ -23,7 +23,8 @@ module.exports = {
 				transparent,
 				skipTaskbar: true,
 				webPreferences: {
-					nodeIntegration: true
+					nodeIntegration: true,
+          contextIsolation: false,
 				}
 			};
 			launchWin = new BrowserWindow(launchOptions);
